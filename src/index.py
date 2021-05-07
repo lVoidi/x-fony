@@ -1,6 +1,7 @@
 import colorama
 from generate_num import Generate_number
 from check_numbers import Checking
+from check_numbers_city import Checking as Checking_with_city
 from time import sleep
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
 class Xphony:
@@ -49,18 +50,7 @@ class Xphony:
                print(f"[{self.cg}*{self.r}] gotten info: {self.country_code}")
                print(f"[{self.c}*{self.r}] going to generate phone numbers with this info")
                print(f"[{self.c}*{self.r}] Input the length of the numbers in the selected country")
-               try:
-                    self.length = int(input(f"{self.cg}~»{self.r}     "))
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
-               except ValueError as e:
-                    state = False
-                    while state == False:
-                         print(f"[{self.cr}*{self.r}] Input VALID length")
-                         try:
-                              sself.length = int(input(f"{self.cr}~»{self.r}     "))
-                              state = True
-                         except ValueError:
-                              continue
+               
                Checking(country=self.country_code)
                
           # If yes:
@@ -88,7 +78,7 @@ class Xphony:
                          
                print(f"[{self.cg}*{self.r}] gotten info: {self.country_code} {self.city_code}")
                print(f"[{self.c}*{self.r}] going to generate phone numbers with this info")
-               
+               Checking_with_city(self.country_code, self.city_code)
           # Else:
           else:
                while temp_election.lower() != 'y' and temp_election.lower() != 'n':
