@@ -3,54 +3,64 @@ from generate_num import Generate_number
 from check_numbers import Checking
 from check_numbers_city import Checking as Checking_with_city
 from time import sleep
+import os
+
+# Colores
+rojo = colorama.Fore.RED
+no_color = colorama.Style.RESET_ALL
+
+
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
+# Clase principal
 class Xphony:
      
      """Takes no arguments
      """
      def __init__(self):
+
+          if os.name == 'nt':
+              os.system("cls")
+          else:
+              os.system("clear")
           self.c = colorama.Fore.LIGHTYELLOW_EX
           self.cr = colorama.Fore.RED
           self.cg = colorama.Fore.GREEN
           self.r = colorama.Style.RESET_ALL
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
-          print(f'''
+          print(self.c, f'''
                 
-                        mmmm
-                       ##"""
- "##  ##"            #######    m####m   ##m####m  "##  ###
-   ####                ##      ##"  "##  ##"   ##   ##m ##
-   m##m     #####      ##      ##    ##  ##    ##    ####"
-  m#""#m               ##      "##mm##"  ##    ##     ###
- """  """              ""        """"    ""    ""     ##
-                                                    ###
-                ''')
+██╗  ██╗     ███████╗ ██████╗ ███╗   ██╗██╗   ██╗
+╚██╗██╔╝     ██╔════╝██╔═══██╗████╗  ██║╚██╗ ██╔╝
+ ╚███╔╝█████╗█████╗  ██║   ██║██╔██╗ ██║ ╚████╔╝ 
+ ██╔██╗╚════╝██╔══╝  ██║   ██║██║╚██╗██║  ╚██╔╝  
+██╔╝ ██╗     ██║     ╚██████╔╝██║ ╚████║   ██║   
+╚═╝  ╚═╝     ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   
+                                                 
+                ''', self.r)
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
           # Country code
           print(f"[{self.c}*{self.r}] Input the country code (exclude the '+' symbol)")
           try:
-               self.country_code = int(input(f"{self.c}~»{self.r}     "))
+               self.country_code = int(input(f"{self.c}>_{self.r}\t\t"))
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
           except ValueError as e:
                state = False
                while state == False:
                     print(f"[{self.cr}*{self.r}] Input VALID country code")
                     try:
-                         self.country_code = int(input(f"{self.cr}~»{self.r}     "))
+                         self.country_code = int(input(f"{self.cr}>_{self.r}\t\t"))
                          state = True
                     except ValueError:
                          continue
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #         
           # City code
           print(f"[{self.c}*{self.r}] does the country need city code? (y/n)")
-          temp_election = input(f"{self.c}~»{self.r}     ")
+          temp_election = input(f"{self.c}>_{self.r}\t\t")
           
           # If no:
           if temp_election.lower() == 'n':
                print(f"[{self.cg}*{self.r}] gotten info: {self.country_code}")
                print(f"[{self.c}*{self.r}] going to generate phone numbers with this info")
-               print(f"[{self.c}*{self.r}] Input the length of the numbers in the selected country")
-               
                Checking(country=self.country_code)
                
           # If yes:
@@ -59,7 +69,7 @@ class Xphony:
                try:
                     
                     print(f"[{self.cg}*{self.r}] input your city code then")
-                    self.city_code = int(input(f"{self.c}~»{self.r}     "))
+                    self.city_code = int(input(f"{self.c}>_{self.r}\t\t"))
                     
                except ValueError as e:
                     
@@ -70,7 +80,7 @@ class Xphony:
                          print(f"[{self.cr}*{self.r}] Input VALID city code")
                          try:
                               
-                              self.city_code = int(input(f"{self.cr}~»{self.r}     "))
+                              self.city_code = int(input(f"{self.cr}>_{self.r}\t\t"))
                               state = True
                               
                          except ValueError:
@@ -83,7 +93,7 @@ class Xphony:
           else:
                while temp_election.lower() != 'y' and temp_election.lower() != 'n':
                     print(f"[{self.cr}*{self.r}] Input VALID response! (y/n)")
-                    temp_election = input(f"{self.c}~»{self.r}     ")
+                    temp_election = input(f"{self.c}>_{self.r}\t\t")
                     
                     # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
                     
@@ -98,7 +108,7 @@ class Xphony:
                     
                          try:
                               print(f"[{self.cg}*{self.r}] input your city code then")
-                              self.city_code = int(input(f"{self.c}~»{self.r}     "))
+                              self.city_code = int(input(f"{self.c}>_{self.r}\t\t"))
                               
                     # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
                     
@@ -107,7 +117,7 @@ class Xphony:
                               while state == False:
                                    print(f"[{self.cr}*{self.r}] Input VALID city code")
                                    try:
-                                        self.city_code = int(input(f"{self.cr}~»{self.r}     "))
+                                        self.city_code = int(input(f"{self.cr}>_{self.r}\t\t"))
                                         state = True
                                         
                     # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
@@ -124,6 +134,12 @@ class Xphony:
                     
                     else:
                          continue
-
-
-Xphony()
+x = Xphony
+try:
+    x()
+except KeyboardInterrupt:
+    print(rojo, "\nSaliendo...", no_color)
+            # Twitter   # Discord
+# Code by:
+# lVoidi    # VoidVoidi # Vøid#2340
+# Black     # None      # Black#5558

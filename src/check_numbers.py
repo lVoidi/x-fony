@@ -2,6 +2,7 @@ import phonenumbers
 import colorama
 from generate_num import Generate_number
 from time import sleep
+import datetime
 class Checking:
      def __init__(self, country):
           """[summary]
@@ -29,11 +30,19 @@ class Checking:
                          state = True
                     except ValueError:
                          continue
+          # Warning
+          print(f"[{self.cr}!{self.r}]\tWARNING, THIS PROGRAM WILL START GENERATING THOUSANDS OF NUMBERS, YOU CAN CANCEL IT ANY TIME BY PRESSING CTRL + C OR CLOSING IT")
+          countdown = 5
+          for _ in range(countdown):
+              print(f'[{self.cr}·{self.r}] STARTING IN {countdown}s')
+              countdown -= 1
+              sleep(1)
+
           while True:
                try:
                     self.generated_number = Generate_number(self.length).gen_number()
                     self.number = f'+{self.country_code}{self.generated_number}'
-                    self.true_phone(phone=self.number)
+                    print(f'{self.true_phone(phone=self.number)}', end='\r')
                     
                except KeyboardInterrupt:
                     break
@@ -44,7 +53,10 @@ class Checking:
           
           if phonenumbers.is_valid_number(self.phone_number):
                self.count_true += 1
+               with open("log.txt", 'a') as log:
+                    log.write(f'{phone}\n')
           else:
                self.count_false += 1
           
-          print('generated:{}{}{} {} count_true: {}     count_false: {}\r'.format(self.c, phonenumbers.is_valid_number(self.phone_number),self.r,phone, self.count_true, self.count_false))
+          # Returns the string with all the information
+          return 'generated:{}{}{} {} count_true: {}     count_false: {}'.format(self.c, phonenumbers.is_valid_number(self.phone_number),self.r,phone, self.count_true, self.count_false)
