@@ -20,7 +20,6 @@ class Checking:
           print(f"[{self.c}*{self.r}] Input the length of the numbers in the selected country")
           try:
                self.length = int(input(f"{self.cg}~»{self.r}     "))
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
           except ValueError as e:
                state = False
                while state == False:
@@ -30,7 +29,6 @@ class Checking:
                          state = True
                     except ValueError:
                          continue
-          # Warning
           print(f"[{self.cr}!{self.r}]\tWARNING, THIS PROGRAM WILL START GENERATING THOUSANDS OF NUMBERS, YOU CAN CANCEL IT ANY TIME BY PRESSING CTRL + C OR CLOSING IT")
           countdown = 5
           for _ in range(countdown):
@@ -47,9 +45,7 @@ class Checking:
                     print(self.cr, "\nSaliendo...", self.r)
                     
      def true_phone(self, phone):
-          
           self.phone_number = phonenumbers.parse(f'+{phone}', None)
-          
           if phonenumbers.is_valid_number(self.phone_number):
                self.count_true += 1
                with open("log.txt", 'a') as log:
