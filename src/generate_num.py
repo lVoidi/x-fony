@@ -6,10 +6,10 @@ class Generate_number:
           self.length = length
           
      def gen_number(self):
-          self.all_generated = ''
+          generated = ''
           
           for x in range(self.length):
                generation = ''.join(random.sample(all_numbers, 1))
-               self.all_generated += generation
+               generated += generation
                
-          return self.all_generated
+          return generated
