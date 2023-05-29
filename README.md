@@ -1,5 +1,5 @@
 # x-fony
-### Genera numeros de donde quieras, cuando quieras
+Genera numeros de donde quieras, cuando quieras. Es fácil.
 
 
 ## Instalación y uso
